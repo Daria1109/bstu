@@ -3,7 +3,7 @@ package ru.bstu.iitus.vt41.Perova;
 import java.util.Scanner;
 
 public class Associate extends  Person {
-    protected String job;
+    private String job;
 
     @Override
     public  void init(Scanner scanner){
@@ -11,13 +11,9 @@ public class Associate extends  Person {
         this.job = scanner.nextLine();
     }
 
-  /*  @Override
-    public  int getAge(){
-        return super.getAge();
-    }
-*/
+
     @Override
     public String toString(){
-        return "Сотрудник работающий в организация " + this.job;
+        return "Сотрудник работающий в организации " + this.job;
     }
 }

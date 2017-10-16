@@ -35,6 +35,6 @@ public class Schoolboy extends Person {
 
     @Override
     public String toString() {
-        return "Школьник, класс обучения " + this.classSchool;
+        return "Школьник, класс обучения " + this.classSchool + " ему, "+ getAge();
     }
 }

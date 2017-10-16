@@ -35,6 +35,6 @@ public class Principal extends  Associate {
 
     @Override
     public String toString(){
-        return "Директор, год назначения " + this.yerOfDestination;
+        return "Директор, год назначения " + this.yerOfDestination + " ему, "+ getAge() ;
     }
 }

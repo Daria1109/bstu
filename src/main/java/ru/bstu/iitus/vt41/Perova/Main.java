@@ -1,20 +1,25 @@
 package ru.bstu.iitus.vt41.Perova;
-import java.util.Scanner;
 
+import java.util.Scanner;
+import java.util.Arrays;
 
 public class Main {
 
-  public static void main(String[] args) {
+    static String[] person = {"ru.bstu.iitus.vt41.Perova.Student", "ru.bstu.iitus.vt41.Perova.Schoolboy",
+            "ru.bstu.iitus.vt41.Perova.Teacher", "ru.bstu.iitus.vt41.Perova.Principal"};
+    static Scanner scanner = new Scanner(System.in);
+    static Person[] array;
 
-        String[] person = {"ru.bstu.iitus.vt41.Perova.Student", "ru.bstu.iitus.vt41.Perova.Schoolboy",
-                "ru.bstu.iitus.vt41.Perova.Teacher", "ru.bstu.iitus.vt41.Perova.Principal"};
-
+    public static int enterNumberOfPerson() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Введите количество товаров");
+        System.out.println("Введите количество персон");
         int personNum = scanner.nextInt();
+        array = new Person[personNum];
+        return personNum;
+    }
 
-        Person[] array = new Person[personNum];
 
+    public static void entryArrayPerson(int personNum) {
         try {
             int i = 0;
             while (i < personNum) {
@@ -22,7 +27,7 @@ public class Main {
                         "1- студент " +
                         "2-школьник " +
                         "3-преподаватель " +
-                        "4-директор" );
+                        "4-директор");
                 int type = scanner.nextInt();
                 scanner.nextLine();
                 if (type >= 1 && type <= 4) {
@@ -41,16 +46,14 @@ public class Main {
             e.printStackTrace();
         }
 
-        Person minAgePerson = null;
-        int minAge = Integer.MAX_VALUE;
-        for (Person pers :
-                array) {
-            if (pers.getAge() < minAge) {
-                minAge = pers.getAge();
-                minAgePerson= pers;
-            }
-        }
+    }
 
-        System.out.println("Самый младший человек это: " + minAgePerson.toString() + " ему " + minAgePerson.getAge());
+    public static void main(String[] args) {
+        entryArrayPerson (enterNumberOfPerson());
+
+        //сортируем массив объектов с помощью Comparator по возрасту
+        Arrays.sort(array, new SortAgeCompare());
+        //System.out.println("Сортировка по возрасту:\n"+Arrays.toString(array));
+        System.out.println("Самый младший человек это: " + array[0].toString());
     }
 }

@@ -35,6 +35,6 @@ public class Teacher extends  Associate{
 
     @Override
     public  String toString() {
-        return "Преподаватель с номером сертификата " + this.numberSertif;
+        return "Преподаватель с номером сертификата " + this.numberSertif + " ему, "+ getAge();
     }
 }

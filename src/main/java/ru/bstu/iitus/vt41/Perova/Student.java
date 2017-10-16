@@ -1,22 +1,29 @@
 package ru.bstu.iitus.vt41.Perova;
+
 import java.util.Scanner;
 
-public class  Student  extends Person{
+public class Student extends Person {
     private int numberStud;
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == this) return true;
+        if (o == null || o.getClass() != this.getClass()) {
+            return false;
+        }
+        Student guest = (Student) o;
+        return birthYear == guest.birthYear && numberStud == guest.numberStud;
 
-        Student student = (Student) o;
 
-        return numberStud == student.numberStud;
     }
+
 
     @Override
     public int hashCode() {
-        return numberStud;
+        int result = 1;
+        result = result * 31 + numberStud;
+        return result;
+
     }
 
     @Override
@@ -28,13 +35,15 @@ public class  Student  extends Person{
         this.numberStud = scanner.nextInt();
         scanner.nextLine();
     }
+
     @Override
     public int getAge() {
         return super.getAge();
     }
+
     @Override
     public String toString() {
-        return "Студент с номером зачетной книжки " + this.numberStud;
+        return "Студент с номером зачетной книжки " + this.numberStud + " ему, " + getAge();
     }
 
 }
